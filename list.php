@@ -24,7 +24,7 @@ echo "<br> <br>";
          <form method = "POST" action='index.php'>
          <input type='hidden' name="item_id" value = <?php echo $res['id']; ?> >
   <input type = 'hidden' name = 'action' value='Edit'>
-  <input type="submit" value="Edit"/>
+  <input type="submit" value="Edit"/><input type="text" name="new_desc">
     </form> 
      </td>
 
