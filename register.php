@@ -46,7 +46,17 @@
      <form action="index.php" method="POST">
 
      <h1>Sign Up</h1>
-
+     <tr>
+     <td> User Name:</td>
+     <input type="text" name="uname"  placeholder="Enter a user name">
+     <br />
+     </tr>
+     <tr>
+     <td> Password :</td>
+     <input type="password" name="password"  placeholder="Enter a password">
+     <br />
+     </tr>
+     
      <tr>
      <td> First Name:</td>
      <input type="text" name="first_name"  placeholder="Enter your First name">
@@ -64,7 +74,7 @@
        </tr>
        <tr>
       <td> Phone number:</td> 
-       <input type="text" name="Phone number" placeholder="Enter Phone number">
+       <input type="text" name="Phonenumber" placeholder="Enter Phone number">
       <br />
        </tr>
        <tr>
@@ -78,7 +88,8 @@
              <label for="g_f">Female</label>   <input required="true" id="g_f" name="G" value="f" type="radio">
 	<br />
 
-          <button type="submit">Sign up</button>
+          <input type="submit">Sign up</input>
+          <input type="hidden" name="action" value="register">
         </tr>
 
 
