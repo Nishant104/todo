@@ -2,6 +2,7 @@
 require('db_connection.php');
 require('db.php');
 $action = filter_input(INPUT_POST, "action");
+echo $action.'current action';
 if($action == NULL)
 {
   $action = "show_login_page";
@@ -21,22 +22,50 @@ if($action == "show_login_page")
   }else{
     header("Location: badInfo.php");
   }
-}else if ($action == 'registrar')
+}else if ($action == 'register')
 {
- // echo " we want to create a new account";
-  $name = filter_input(INPUT_POST, 'reg_uname');
+  $name = filter_input(INPUT_POST, 'uname');
   if(isset($name))
   {
-     $pass = filter_input(INPUT_POST, 'reg_password');
-     $exit = createUser($name,$pass);
+      //echo " we want to create a new account";
+
+     $pass = filter_input(INPUT_POST, 'password');
+     $first_n=filter_input(INPUT_POST, 'first_name');
+     $last_n=filter_input(INPUT_POST, 'last_name');
+     $email=filter_input(INPUT_POST, 'email');
+     $phone_n=filter_input(INPUT_POST, 'Phonenumber');
+     $bday=filter_input(INPUT_POST, 'Birthday');
+     $gender=filter_input(INPUT_POST, 'G');
+
+     $query = "INSERT INTO `ns725`.`users`( `username`, `passwordHash`, `Firstname`, `Lastname`, `Email`, `phonenumber`, `Birthday`, `gender`) VALUES ('$name','$pass','$first_n','$last_n','$email','$phone_n','$bday','$gender')";
+     
+    $exit= createUser($name,$pass,$first_n,$last_n,$email,$phone_n,$bday,$gender);
+    $exit;
      if($exit == true)
      {
        include('user_exit.php');
      }else {
-       header("Location: login.php");
+     //  header("Location: login.php");
      }
   }
-}else if ($action == 'add')
+}
+
+else if ($action == 'Edit'){
+echo 'inside_edit';
+if (isset($_POST['new_desc']) and isset($_POST['item_id']))
+     {
+      echo $_POST['new_desc'];
+      $todo_item=$_POST['new_desc'];
+      $todo_id=$_POST['item_id'];
+
+     editTodoItems($todo_item,$todo_id);
+     }
+   
+
+     $result = getTodoItems($_COOKIE['my_id']);
+      include('list.php');
+}
+else if ($action == 'add')
 
 {
    if (isset($_POST['description']) and $_POST['description']!='')
@@ -46,11 +75,14 @@ if($action == "show_login_page")
      }
      $result = getTodoItems($_COOKIE['my_id']);
       include('list.php');
-}else if($action == 'delete') {
+}else if($action == 'Delete') {
       if(isset($_POST['item_id'])){
-        $selected = $_post['item_id'];
-        deleteTodoItem($_COOKIE['my_id'],$selected);
 
+        $selected = $_POST['item_id'];
+        echo $_POST['item_id'].$_COOKIE['my_id'];
+
+        deleteTodoItems($_COOKIE['my_id'],$selected);
+        
     $result = getTodoItems($_COOKIE['my_id']);
     include('list.php');
       }
