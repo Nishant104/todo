@@ -3,21 +3,21 @@
   <title>Login Page</title>
   <style type="text/css">
     div.container {
-      border: 3px solid #01f1f1;
+      border: 3px solid #FF4500;
       padding: 6px;
       width:300px;
       margin:20px auto;
       text-align:center;  
     }
     .login { 
-      background:#f9f9f9; 
+      background:#D2691E; 
     }
     .login div {
       border:2px solid #fff;
       padding:3px;
     }
     .register { 
-      background:#f9f9f9; 
+      background:#D2691E; 
     }
     .register div {
       border:2px solid #fff;
