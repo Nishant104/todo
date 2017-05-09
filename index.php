@@ -2,7 +2,6 @@
 require('db_connection.php');
 require('db.php');
 $action = filter_input(INPUT_POST, "action");
-echo $action.'current action';
 if($action == NULL)
 {
   $action = "show_login_page";
@@ -45,13 +44,12 @@ if($action == "show_login_page")
      {
        include('user_exit.php');
      }else {
-     //  header("Location: login.php");
+      header("Location: login.php");
      }
   }
 }
 
 else if ($action == 'Edit'){
-echo 'inside_edit';
 if (isset($_POST['new_desc']) and isset($_POST['item_id']))
      {
       echo $_POST['new_desc'];
@@ -71,7 +69,7 @@ else if ($action == 'add')
    if (isset($_POST['description']) and $_POST['description']!='')
      {
       
-      addTodoItem($_COOKIE['my_id'],$_POST['description']);
+      addTodoItem($_COOKIE['my_id'],$_POST['description'],$_POST['Date'],$_POST['Time']);
      }
      $result = getTodoItems($_COOKIE['my_id']);
       include('list.php');
@@ -79,7 +77,7 @@ else if ($action == 'add')
       if(isset($_POST['item_id'])){
 
         $selected = $_POST['item_id'];
-        echo $_POST['item_id'].$_COOKIE['my_id'];
+        //echo $_POST['item_id'].$_COOKIE['my_id'];
 
         deleteTodoItems($_COOKIE['my_id'],$selected);
         
