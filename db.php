@@ -13,12 +13,14 @@
  
 }
   
-   function addTodoItem($user_id,$todo_text){
+   function addTodoItem($user_id,$todo_text,$Date,$Time){
      global $db;
-     $query = 'insert into `ns725`.todos(user_id,todo_item) values (:userid,:todo_text)';
+     $query = 'insert into `ns725`.todos(user_id,todo_item,Date,Time) values (:userid,:todo_text,:Date,:Time)';
      $statement = $db->prepare($query);
      $statement->bindValue(':userid',$user_id);
      $statement->bindValue(':todo_text',$todo_text);
+     $statement->bindValue(':Date',$Date);
+     $statement->bindValue(':Time',$Time);
      $statement->execute();
      $statement->closeCursor();
   
