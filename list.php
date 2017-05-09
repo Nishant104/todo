@@ -12,6 +12,10 @@ echo "<br> <br>";
       <tr>
         <td> <?php echo $res['todo_item']; ?>  </td>
 
+        <td> <?php echo $res['Date']; ?> 
+         </td>
+        <td> <?php echo $res['Time']; ?> 
+         </td>
         <td>
          <form method = "POST" action='index.php'>
          <input type='hidden' name="item_id" value = <?php echo $res['id']; ?> >
@@ -33,7 +37,9 @@ echo "<br> <br>";
       
     </table>
     <form method ="POST" action="index.php">
-        <strong> Description: </strong> <input type='text' name='description' ><br>
+   <strong> Description: </strong> <input type='text' name='description' ><br>
+    <strong> Date: </strong> <input type='Date' name='Date' ><br>
+     <strong> Time: </strong> <input type='Time' name='Time' ><br>
 	<input type = 'hidden' name = 'action' value='add'><br>
 	<input type="submit" value="Add"/>
     </form>
